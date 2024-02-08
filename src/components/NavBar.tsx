@@ -1,4 +1,5 @@
 import { SignInButton, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export function NavBar() {
   return (
@@ -51,6 +52,15 @@ export function NavBar() {
               >
                 Home
               </a>
+            </li>
+            <li>
+              <Link
+                href="sell-an-item"
+                className="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 dark:text-white md:dark:text-blue-500"
+                aria-current="page"
+              >
+                Sell an Item
+              </Link>
             </li>
             <li>
               <SignInButton>
