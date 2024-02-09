@@ -15,7 +15,6 @@ export default function SellAnItem() {
 
   const { register, handleSubmit } = useForm<SellItemForm>();
   const onSubmit = (formData: SellItemForm) => {
-    console.log(formData);
     createListing
       .mutateAsync({
         ...formData,
