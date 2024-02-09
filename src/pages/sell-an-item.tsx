@@ -1,18 +1,30 @@
 import Head from "next/head";
 import { api } from "~/utils/api";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 type SellItemForm = {
   name: string;
   description: string;
-  price: number;
+  price: string;
 };
 
 export default function SellAnItem() {
-  const { register, handleSubmit } = useForm<SellItemForm>();
-  const onSubmit = (formData: SellItemForm) => console.log(formData);
+  const createListing = api.listings.create.useMutation();
+  const router = useRouter();
 
-  //   const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const { register, handleSubmit } = useForm<SellItemForm>();
+  const onSubmit = (formData: SellItemForm) => {
+    console.log(formData);
+    createListing
+      .mutateAsync({
+        ...formData,
+        price: parseFloat(formData.price),
+      })
+      .then(() => {
+        router.push("/");
+      });
+  };
 
   return (
     <>
