@@ -17,7 +17,7 @@ export function NavBar() {
             alt="Flowbite Logo"
           />
           <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-            Flowbite
+            MarketPlace
           </span>
         </a>
         <button
@@ -52,7 +52,7 @@ export function NavBar() {
                 className="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 dark:text-white md:dark:text-blue-500"
                 aria-current="page"
               >
-                Home
+                Browse
               </a>
             </li>
             {user.isSignedIn && (

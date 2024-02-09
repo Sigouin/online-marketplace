@@ -6,6 +6,34 @@ export const listingsRouter = createTRPCRouter({
   list: publicProcedure.query(({ctx}) =>{
     return ctx.db.listing.findMany();
   }),
+  get: publicProcedure
+  .input(
+    z.object({ listingId: z.string() })
+  )
+  .query(({ctx, input}) => {
+
+    return ctx.db.listing.findUnique({
+      where:{
+        id: input.listingId,
+      }
+    })
+  }),
+
+  sendMessage: protectedProcedure
+  .input(
+    z.object({ message: z.string(), listingId: z.string() })
+  )
+  .mutation(async ({ input, ctx}) => {
+   const message = await ctx.db.message.create({
+      data: {
+        fromUser     : ctx.auth.userId,
+        fromUserName : ctx.auth.user?.username ?? "unknown",
+        listingId    : input.listingId,
+        message      : input.message
+      },
+    });
+    return message;
+  }),
 
   create: protectedProcedure
   .input(

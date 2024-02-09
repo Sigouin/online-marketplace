@@ -1,5 +1,6 @@
 import { type Listing } from "@prisma/client";
 import Head from "next/head";
+import Link from "next/link";
 
 import { api } from "~/utils/api";
 
@@ -22,11 +23,11 @@ function Card({ listing }: { listing: Listing }) {
         <p className="mb-3 h-28 font-normal text-gray-700 dark:text-gray-400">
           {listing.description}
         </p>
-        <a
-          href="#"
+        <Link
+          href={`/listings/${listing.id}`}
           className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Read more
+          Message
           <svg
             className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
             aria-hidden="true"
@@ -42,7 +43,7 @@ function Card({ listing }: { listing: Listing }) {
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );
