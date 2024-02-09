@@ -19,6 +19,20 @@ export const listingsRouter = createTRPCRouter({
     })
   }),
 
+  getMessage: protectedProcedure
+  .query(async ({ input, ctx}) => {
+    const userId = ctx.auth.userId;
+   const listing = await ctx.db.listing.findMany({
+      where: {
+        userId,
+      },
+      include: {
+        message: true
+      }
+    });
+    return listing.flatMap((item) => item.message);
+  }),
+
   sendMessage: protectedProcedure
   .input(
     z.object({ message: z.string(), listingId: z.string() })
