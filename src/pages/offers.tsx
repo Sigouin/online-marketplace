@@ -13,10 +13,31 @@ export default function Offers() {
       </Head>
       <main className="flex min-h-screen flex-col gap-12 bg-gray-800">
         <h1 className="mt-12 pl-4 text-4xl">Your Offers</h1>
-        <div className="container grid grid-cols-3 items-center justify-center gap-4">
-          {messages?.data?.map((message) => (
-            <div key={message.id}>{message.message}</div>
-          ))}
+        <div className="relative overflow-x-auto">
+          <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+            <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  From
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Message
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {messages?.data?.map((message) => (
+                <tr
+                  key={message.id}
+                  className="border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 odd:dark:bg-gray-900 even:dark:bg-gray-800"
+                >
+                  {/* TODO: change fromUser to fromUserId */}
+                  <td className="px-6 py-4">{message.fromUser}</td>
+                  <td className="px-6 py-4">{message.message}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </main>
     </>
