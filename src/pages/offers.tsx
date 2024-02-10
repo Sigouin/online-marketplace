@@ -13,7 +13,7 @@ export default function Offers() {
       </Head>
       <main className="flex min-h-screen flex-col gap-12 bg-gray-800">
         <h1 className="mt-12 pl-4 text-4xl">Your Offers</h1>
-        <div className="relative overflow-x-auto">
+        <div className="container relative mx-auto overflow-x-auto">
           <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
             <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
               <tr>

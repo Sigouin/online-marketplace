@@ -1,6 +1,8 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
+//TODO: Browse should link to listings and show items. Should be able to see if logged out as well.
+
 export function NavBar() {
   const user = useUser();
 
@@ -60,6 +62,17 @@ export function NavBar() {
                   aria-current="page"
                 >
                   Sell an Item
+                </Link>
+              </li>
+            )}
+            {user.isSignedIn && (
+              <li>
+                <Link
+                  href="offers"
+                  className="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 dark:text-white md:dark:text-blue-500"
+                  aria-current="page"
+                >
+                  Offers
                 </Link>
               </li>
             )}
