@@ -14,6 +14,8 @@ function Card({ listing }: { listing: Listing }) {
         <Image
           className="rounded-t-lg"
           src="/docs/images/blog/image-1.jpg"
+          width={400}
+          height={200}
           alt=""
         />
       </a>
