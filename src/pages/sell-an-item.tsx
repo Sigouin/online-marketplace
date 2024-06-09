@@ -12,6 +12,9 @@ type SellItemForm = {
 export default function SellAnItem() {
   const createListing = api.listings.create.useMutation();
   const router = useRouter();
+  const listingRouter = async () => {
+    await router.push("/");
+  };
 
   const { register, handleSubmit } = useForm<SellItemForm>();
   const onSubmit = (formData: SellItemForm) => {
@@ -20,8 +23,9 @@ export default function SellAnItem() {
         ...formData,
         price: parseFloat(formData.price),
       })
-      .then(() => {
-        router.push("/");
+      .then(listingRouter)
+      .catch((error) => {
+        console.error("Error sending message:", error);
       });
   };
 

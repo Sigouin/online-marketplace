@@ -1,14 +1,17 @@
 import { type Listing } from "@prisma/client";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 
 import { api } from "~/utils/api";
+
+//TODO: Probably move card to components and import here
 
 function Card({ listing }: { listing: Listing }) {
   return (
     <div className="h-60 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
       <a href="#">
-        <img
+        <Image
           className="rounded-t-lg"
           src="/docs/images/blog/image-1.jpg"
           alt=""
@@ -37,9 +40,9 @@ function Card({ listing }: { listing: Listing }) {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>

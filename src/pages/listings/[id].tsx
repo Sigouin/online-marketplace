@@ -49,7 +49,10 @@ export default function ListingView() {
                       message: formData.message,
                       listingId: listingItem.id,
                     })
-                    .then(() => reset());
+                    .then(() => reset())
+                    .catch((error) => {
+                      console.error("Error sending message:", error);
+                    });
                 })}
               >
                 <div>
